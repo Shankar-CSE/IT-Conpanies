@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Alert</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+<!-- Header -->
+<header class="bg-white border-b">
+  <div class="max-w-7xl mx-auto px-6 py-5">
+    <h1 class="text-2xl font-bold">📊 Company Alert</h1>
+    <p class="text-sm text-slate-500">Research Dashboard</p>
+  </div>
+</header>
+
+<!-- Search -->
+<section class="max-w-7xl mx-auto px-6 mt-6">
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Search company name..."
+    class="w-full md:w-1/3 px-4 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    onkeyup="searchCompanies()"
+  />
+</section>
+
+<!-- Cards Grid -->
+<main class="max-w-7xl mx-auto px-6 py-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-6">
+
+    <!-- Company Card -->
+    <div class="company-card bg-white rounded-xl border shadow-sm hover:shadow-md transition">
+
+      <!-- Header -->
+      <div class="p-5 flex gap-4 items-start">
+        <!-- Logo -->
+        <div class="w-14 h-14 bg-slate-100 rounded-lg flex items-center justify-center border">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D0BAQE6qa8pxpYxzg/company-logo_200_200/B4DZdyqsIjHMAI-/0/1749975483325/aurionpro_solutions_logo?e=2147483647&v=beta&t=ua4bWkbcjWlM1RhMr2PgO3u17qKYKUc_6r1aJOvdjKQ"
+            alt="Aurionpro Logo"
+            class="w-10 h-10 object-contain"
+          />
+        </div>
+
+        <!-- Company Info -->
+        <div class="flex-1">
+          <h2 class="company-name text-lg font-semibold">
+            Aurionpro Solutions
+          </h2>
+          <p class="text-sm text-slate-500">IT & Digital Platforms</p>
+
+          <a
+            href="https://www.aurionpro.com"
+            target="_blank"
+            class="inline-block mt-1 text-sm text-blue-600 hover:underline"
+          >
+            Visit Website →
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t"></div>
+
+      <!-- Quick Facts -->
+      <div class="p-5 text-sm space-y-3">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Founded</span>
+          <span class="font-medium">31 Oct 1997</span>
+        </div>
+
+        <div class="flex justify-between">
+          <span class="text-slate-500">Type</span>
+          <span class="font-medium">Hybrid Company</span>
+        </div>
+
+        <div class="flex justify-between">
+          <span class="text-slate-500">Listed</span>
+          <span class="font-medium">NSE & BSE</span>
+        </div>
+      </div>
+
+      <!-- Expand -->
+      <div class="px-5 pb-5">
+        <button
+          onclick="toggleDetails(this)"
+          class="w-full text-sm font-medium py-2 rounded-lg border border-slate-300 hover:bg-slate-50 transition"
+        >
+          View Details
+        </button>
+      </div>
+
+      <!-- Expanded Details -->
+      <div class="hidden border-t bg-slate-50 px-5 py-4 text-sm space-y-4">
+
+        <div>
+          <h3 class="font-semibold mb-1">📌 Headquarters</h3>
+          <p class="text-slate-600">
+            Synergia IT Park, Rabale, Navi Mumbai, Maharashtra – 400701
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-1">🏦 Clients & Industries</h3>
+          <p class="text-slate-600">
+            BFSI, Smart Mobility, Government sectors across India, APAC, US,
+            Middle East, and Africa.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-1">🤝 Key Clients</h3>
+          <p class="text-slate-600">
+            SBI, HDFC Bank, Axis Bank, Kotak Mahindra Bank, Citi Bank,
+            Barclays, Allianz, Goldman Sachs
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-1">📈 Stock Info</h3>
+          <p class="text-slate-600">
+            NSE: AURIONPRO • BSE: 532668<br />
+            Price: ₹1,130 (Approx)
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-1">💡 Investor Interest</h3>
+          <p class="text-slate-600">
+            Strong IP-led platforms, AI integration, and high-growth banking
+            & mobility deals.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-1">📰 Recent Highlights</h3>
+          <p class="text-slate-600">
+            Multi-year banking contracts and AI-powered digital platform
+            expansion.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- JS -->
+<script>
+  function toggleDetails(button) {
+    const details = button.parentElement.nextElementSibling;
+    details.classList.toggle("hidden");
+    button.textContent =
+      details.classList.contains("hidden")
+        ? "View Details"
+        : "Hide Details";
+  }
+
+  function searchCompanies() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const cards = document.getElementsByClassName("company-card");
+
+    for (let card of cards) {
+      const name = card.querySelector(".company-name").innerText.toLowerCase();
+      card.style.display = name.includes(input) ? "block" : "none";
+    }
+  }
+</script>
+
+</body>
+</html>
